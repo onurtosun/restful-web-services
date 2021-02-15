@@ -61,17 +61,10 @@ public class UserResource {
             throw new UserNotFoundException("id-"+ id);
     }
 
-    //
-    // input - details of user
-    // output - CREATED & Return the created URI
-
-    //HATEOAS
 
     @PostMapping("/users")
     public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
         User savedUser = service.save(user);
-        // CREATED
-        // /user/{id}     savedUser.getId()
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
